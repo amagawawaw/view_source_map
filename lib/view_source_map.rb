@@ -22,7 +22,7 @@ module ViewSourceMap
             path = Pathname.new(@template.identifier)
             name = path.relative_path_from(Rails.root)
           end
-          "<!-- BEGIN #{name} -->\n#{content}<!-- END #{name} -->".html_safe
+          "<!-- BEGIN #{name} -->#{content}<!-- END #{name} -->".html_safe
         else
           content
         end
@@ -42,7 +42,7 @@ module ViewSourceMap
             if @lookup_context.rendered_format == :html and template.class != ActionView::Template::Text
               path = Pathname.new(template.identifier)
               name = path.relative_path_from(Rails.root)
-              "<!-- BEGIN #{name} -->\n#{content}<!-- END #{name} -->".html_safe
+              "<!-- BEGIN #{name} -->#{content}<!-- END #{name} -->".html_safe
             else
               content
             end
